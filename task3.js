@@ -23,11 +23,12 @@ function displayBlog(){
     date_time.style.color = "grey";
     date_time.style.fontWeight = "bold";
     var parent = document.getElementById("posts");
-    parent.appendChild(date_time);
+
     var post = document.getElementsByTagName('textarea');
     var str = post[0].value;
-    console.log(str);
+
     const createpost = document.createElement('P');
+    createpost.style.fontWeight = "normal";
     createpost.className = "post-content";
     createpost.innerText = str;
     var elements = document.querySelectorAll('input[name = "color"]');
@@ -38,7 +39,17 @@ function displayBlog(){
         }
     }
     createpost.style.color = colour;
-    parent.appendChild(createpost);
+    date_time.appendChild(createpost);
+    var elements = document.querySelectorAll('input[type = "checkbox"]');
+    for(const element of elements){
+        if(element.checked && element.value === "bold"){
+            console.log(element.value);
+            createpost.style.fontWeight = element.value;
+        }else if(element.checked && element.value === "italic"){
+            createpost.style.fontStyle = element.value;
+        }
+    }
+    parent.appendChild(date_time);
 }
 function displayBlog_manytimes(){
     var element = document.querySelector('input[name = "quantity"]');
@@ -51,5 +62,23 @@ function displayBlog_manytimes(){
 function changeBackgroundColor(){
     var getText = document.querySelector('input[type = "text"]');
     document.querySelector("body").style.backgroundColor = getText.value;
+}
+
+function manageDisplay(){
+    var allposts = document.getElementsByClassName("post-time");
+    var range = document.querySelector('input[type = "range"]');
+   if (range.value >= allposts.length){//posts length = 3, range = 0
+       for(let i = 1; i < allposts.length; i++ ){
+           allposts[i].style.display = "block";
+       }
+   }else{
+       for(let j = 1; j < range.value; j++){
+           allposts[j].style.display = "block";
+       }
+       for(let j = range.value; j < allposts.length; j++){
+           allposts[j].style.display = "none";
+       }
+   }
+
 }
 
