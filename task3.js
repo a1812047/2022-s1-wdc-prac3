@@ -6,6 +6,14 @@ function increaseCount(){
     object.innerText = count;
 }
 
+function changeDisplay(){
+    var object1 = document.getElementById("main");
+    var object2 = document.getElementById("menu");
+    let disp = object1.style.display;
+    object1.style.display = object2.style.display;
+    object2.style.display = disp;
+}
+
 function displayBlog(){
     const date_time = document.createElement('P');
     date_time.className = "post-time";
@@ -32,9 +40,6 @@ function displayBlog(){
     createpost.style.color = colour;
     parent.appendChild(createpost);
 }
-
-
-
 function displayBlog_manytimes(){
     var element = document.querySelector('input[name = "quantity"]');
     var storeValue = element.value;
@@ -42,3 +47,9 @@ function displayBlog_manytimes(){
         displayBlog();
     }
 }
+
+function changeBackgroundColor(){
+    var getText = document.querySelector('input[type = "text"]');
+    document.querySelector("body").style.backgroundColor = getText.value;
+}
+
