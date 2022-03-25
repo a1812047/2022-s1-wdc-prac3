@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 var count = 0;
 function increaseCount(){
@@ -40,8 +41,8 @@ function displayBlog(){
     }
     createpost.style.color = colour;
     date_time.appendChild(createpost);
-    var elements = document.querySelectorAll('input[type = "checkbox"]');
-    for(const element of elements){
+    var elementz = document.querySelectorAll('input[type = "checkbox"]');
+    for(const element of elementz){
         if(element.checked && element.value === "bold"){
             console.log(element.value);
             createpost.style.fontWeight = element.value;
